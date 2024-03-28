@@ -1,24 +1,115 @@
 * {
-	box-sizing: border-box;
-	text-decoration: none;
+    box-sizing: border-box;
+    text-decoration: none;
     font-family: "Poppins", sans-serif;
-	font-optical-sizing: auto;
-	font-style: normal;
-	cursor: default;
+    font-optical-sizing: auto;
+    font-style: normal;
+    cursor: default;
 }
 img {
-	user-select: none;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	-o-user-select: none;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
-
-
-
-
+body {
+	background: linear-gradient(150deg, #33ddf8, #0145e3);
+	color: #fff;
+	overflow: hidden;
+	font-weight: 300;
+	letter-spacing: 0;
+	padding: 0;
+	margin: 0;
+	height: 100dvh;
+	z-index: 0;
+}
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1.25rem;
+}
+.widget {
+    background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 0.75rem;
+    transition: border 0.15s ease-out;
+    &:hover {
+        border: 1px solid rgba(255,255,255,0.5);
+        transition: border 0.15s ease-out;
+    }
+}
+.desc {
+    color: rgba(255,255,255,0.5);
+}
+.left {
+    position: relative;
+    width: 20.25rem;
+    height: 31rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+form {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    width: 2rem;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 0 0.4em;
+    overflow-x: hidden;
+    transition: width 0.3s ease-out;
+    &:hover {
+        width: 17.75rem;
+        transition: width 0.3s ease-out;
+    }
+}
+button {
+    all: unset;
+    height: 1.5rem;
+    color: rgba(255,255,255,0.7);
+    margin-right: 0.3rem;
+}
+.material-symbols-outlined {
+    font-size: 1.25rem !important;
+    vertical-align: -0.28rem;
+}
+input {
+    all: unset;
+    height: 2rem;
+    color: rgba(255,255,255,0.8);
+    flex-grow: 1;
+}
+.right {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1.25rem;
+}
+.top {
+    height: 9.5rem;
+}
+.mid {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 1.25rem;
+}
+.details {
+    width: 9.5rem;
+    height: 9.5rem;
+}
 .wind {
-    width: 260px;
-    height: 260px;
-    background: conic-gradient(white, blue);
+    width: 9.5rem;
+    height: 9.5rem;
+    background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+}
+.bot {
+    height: 9.5rem;
 }

@@ -21,6 +21,7 @@ const speed = document.querySelector(".speed");
 const direction = document.querySelector(".direction");
 const sunrise = document.querySelector(".sunrise");
 const sunset = document.querySelector(".sunset");
+const body = document.querySelector("body");
 
 const currentdate = new Date();
 const options = {month: "long"};
@@ -49,26 +50,12 @@ if("geolocation" in navigator){
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    temperature.textContent = "Loading";
-    icon.src = "";
-    condition.textContent = "";
-    place.textContent = "-";
-    country.textContent = "";
-    feels.textContent = "-";
-    tmin.textContent = "-";
-    tmax.textContent = "-";
-    humidity.textContent = "-";
-    pressure.textContent = "-";
-    visibility.textContent = "-";
-    speed.textContent = "-";
-    direction.textContent = "";
-    sunrise.textContent = "-";
-    sunset.textContent = "-";
     showdata(input.value);
 });
 
 function showdata(city){
     getweatherdata(city, (result) => {
+        input.value = "";
         if(result.cod == 200){
             console.log(result);
             temperature.textContent = (result?.main?.temp - 273.15).toFixed(0) + String.fromCharCode(176);
@@ -82,14 +69,37 @@ function showdata(city){
             humidity.textContent = result?.main?.humidity + "%";
             pressure.textContent = result?.main?.pressure + "hPa";
             visibility.textContent = (result?.visibility / 1000).toFixed(1) + "km";
-            speed.textContent = result?.wind?.speed;
-            direction.textContent = windarray[(((result?.wind?.deg + 22.5) % 360) / 8).toFixed(0)];
-            wind.style = `background: conic-gradient(from ${result?.wind?.deg}deg, white, blue);`;
-            sunrise.textContent = (new Date(result?.sys?.sunrise * 1000)).toTimeString().substring(0, 5);
-            sunset.textContent = (new Date(result?.sys?.sunset * 1000)).toTimeString().substring(0, 5);
+            speed.textContent = result?.wind?.speed.toFixed(1);
+            direction.textContent = windarray[Math.trunc(((result?.wind?.deg + 22.5) % 360) / 45)];
+            wind.style = `background: conic-gradient(from ${result?.wind?.deg}deg, rgba(255,255,255,0.3), rgba(255,255,255,0.05));`;
+            sunrise.textContent = (new Date((result?.sys?.sunrise + currentdate.getTimezoneOffset()*60 + result?.timezone) * 1000)).toTimeString().substring(0, 5);
+            sunset.textContent = (new Date((result?.sys?.sunset + currentdate.getTimezoneOffset()*60 + result?.timezone) * 1000)).toTimeString().substring(0, 5);
+            body.style = "background: linear-gradient(150deg, #bababa, #6d85b5);";
+            if(result?.weather[0]?.id == 800){
+                body.style = "background: linear-gradient(150deg, #33ddf8, #0145e3);";
+            }
+            if(result?.weather[0]?.icon.substring(3, 2) === 'n'){
+                body.style = "background: linear-gradient(150deg, #000c3e, #000000);";
+            }
         }
         else{
-            temperature.textContent = "City not found";
+            temperature.textContent = "Not found";
+            icon.src = "";
+            condition.textContent = "";
+            place.textContent = "";
+            country.textContent = "";
+            feels.textContent = "-";
+            tmin.textContent = "-";
+            tmax.textContent = "-";
+            humidity.textContent = "-";
+            pressure.textContent = "-";
+            visibility.textContent = "-";
+            speed.textContent = "-";
+            direction.textContent = "";
+            wind.style = "background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.2));";
+            sunrise.textContent = "-";
+            sunset.textContent = "-";
+            body.style = "background: linear-gradient(150deg, #33ddf8, #0145e3);";
         }
     });
 }
