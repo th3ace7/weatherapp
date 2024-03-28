@@ -1,1 +1,24 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css);
+* {
+	box-sizing: border-box;
+	text-decoration: none;
+    font-family: "Poppins", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	cursor: default;
+}
+img {
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+}
+
+
+
+
+.wind {
+    width: 260px;
+    height: 260px;
+    background: conic-gradient(white, blue);
+}

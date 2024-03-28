@@ -1,27 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
     {{>header}}
+    <script type="text/javascript" src="./js/app.js" defer></script>
     <body>
         <main>
-            <div class="search">
-                <form class="locationform">
-                    <input type="text" placeholder="city"/>
-                    <button>Search</button>
-                </form>
-            </div>
-            <div class="weathericon">
-                <i></i>
-            </div>
-            <div class="weatherinfo">
-                <div class="temperature">
-                    <span></span>
+            <div class="widget left">
+                <div class="search">
+                    <form>
+                        <input type="text" placeholder="Search"/>
+                        <button>Search</button>
+                    </form>
                 </div>
-                <div class="weathercondition">
-                    
+                <div class="maininfo">
+                    <div class="temperature">-</div>
+                    <div class="auxinfo">
+                        <div class="icon"><img/></div>
+                        <div class="condition"></div>
+                    </div>
+                </div>
+                <div class="location">
+                    <div class="place">-</div>
+                    <div class="country"></div>
                 </div>
             </div>
-            <div class="place"></div>
-            <div class="date"></div>
+            <div class="right">
+                <div class="widget top">
+                    <div class="tempinfo">
+                        <div class="row">
+                            <div class="value feels">-</div>
+                            <div class="desc">feels like</div>
+                        </div>
+                        <div class="row">
+                            <div class="value tmin">-</div>
+                            <div class="desc">min</div>
+                        </div>
+                        <div class="row">
+                            <div class="value tmax">-</div>
+                            <div class="desc">max</div>
+                        </div>
+                    </div>
+                    <div class="date">
+                        <div class="day"></div>
+                        <div class="month"></div>
+                    </div>
+                </div>
+                <div class="mid">
+                    <div class="widget details">
+                        <div class="col">
+                            <div class="desc">humidity</div>
+                            <div class="value humidity">-</div>
+                        </div>
+                        <div class="col">
+                            <div class="desc">pressure</div>
+                            <div class="value pressure">-</div>
+                        </div>
+                        <div class="col">
+                            <div class="desc">visibility</div>
+                            <div class="value visibility">-</div>
+                        </div>
+                    </div>
+                    <div class="widget wind">
+                        <div class="speed">-</div>
+                        <div class="windinfo">
+                            <div class="unit">m/s</div>
+                            <div class="direction"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget bot">
+                    <div class="time">
+                        <div class="sunrise">-</div>
+                        <div class="desc">sunrise</div>
+                    </div>
+                    <div class="time">
+                        <div class="sunset">-</div>
+                        <div class="desc">sunset</div>
+                    </div>
+                </div>
+            </div>
         </main>
     </body>
 </html>
