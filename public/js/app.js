@@ -30,15 +30,15 @@ month.textContent = monthname;
 day.textContent = currentdate.getDate();
 
 if("geolocation" in navigator){
-    temperature.textContent = "Loading";
+    condition.textContent = "Loading";
     navigator.geolocation.getCurrentPosition(
         function (position) {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             const apiurl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
             fetch(apiurl).then((response) => response.json()).then((data) => {
-                if(data && data.address && data.address.city){
-                    const city = data.address.city;
+                if(data && data.address && (data.address.city || data.address.village)){
+                    const city = data.address.city || data.address.village;
                     showdata(city);
                 }
             }).catch((error) => {
@@ -57,8 +57,7 @@ function showdata(city){
     getweatherdata(city, (result) => {
         input.value = "";
         if(result.cod == 200){
-            console.log(result);
-            temperature.textContent = (result?.main?.temp - 273.15).toFixed(0) + String.fromCharCode(176);
+            temperature.textContent = (result?.main?.temp - 273.15).toFixed(0);
             icon.src = `https://openweathermap.org/img/wn/${result?.weather[0]?.icon}@2x.png`;
             condition.textContent = result?.weather[0]?.description;
             place.textContent = result?.name;
@@ -83,9 +82,9 @@ function showdata(city){
             }
         }
         else{
-            temperature.textContent = "Not found";
+            temperature.textContent = "";
             icon.src = "";
-            condition.textContent = "";
+            condition.textContent = "Not found";
             place.textContent = "";
             country.textContent = "";
             feels.textContent = "-";
