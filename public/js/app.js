@@ -3,7 +3,8 @@ const windarray = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
 
 const form = document.querySelector("form");
 const input = document.querySelector("input");
-const temperature = document.querySelector(".temperature");
+const temperature = document.querySelector("span:first-child");
+const sym = document.querySelector("span:last-child");
 const icon = document.querySelector(".icon img");
 const condition = document.querySelector(".condition");
 const place = document.querySelector(".place");
@@ -58,6 +59,7 @@ function showdata(city){
         input.value = "";
         if(result.cod == 200){
             temperature.textContent = (result?.main?.temp - 273.15).toFixed(0);
+            sym.textContent = String.fromCharCode(176);
             icon.src = `https://openweathermap.org/img/wn/${result?.weather[0]?.icon}@2x.png`;
             condition.textContent = result?.weather[0]?.description;
             place.textContent = result?.name;
@@ -83,6 +85,7 @@ function showdata(city){
         }
         else{
             temperature.textContent = "";
+            sym.textContent = "";
             icon.src = "";
             condition.textContent = "Not found";
             place.textContent = "";

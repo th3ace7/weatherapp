@@ -94,12 +94,17 @@ input {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    margin-top: 9.5rem;
+    margin-top: 9rem;
 }
 .temperature {
     font-size: 6rem;
     font-weight: 200;
     line-height: 1cap;
+}
+span:last-child {
+    font-size: 4rem;
+    font-weight: 300;
+    vertical-align: 1.5rem;
 }
 .auxinfo {
     display: flex;
@@ -108,6 +113,7 @@ input {
     margin-top: 0.75rem;
     gap: 0.125rem;
     height: 2rem;
+    margin-right: 0.5rem;
 }
 .icon img {
     height: 2rem;
@@ -167,12 +173,12 @@ input {
     flex-flow: column nowrap;
     align-items: center;
     margin-left: auto;
-    gap: 0.125rem;
-    margin-right: 1.75rem;
+    margin-right: 2rem;
     transform: translateY(-0.09rem);
 }
 .day {
     font-size: 2.125rem;
+    letter-spacing: 0.05rem;
 }
 .month {
     font-size: 1.375rem;
@@ -188,8 +194,8 @@ input {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    padding-left: 1rem;
-    gap: 0.8rem;
+    padding-left: 0.8rem;
+    gap: 0.75rem;
 }
 .col {
     display: flex;
@@ -240,11 +246,12 @@ input {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.125rem;
 }
 .timestamp {
     font-size: 2rem;
     font-weight: 300;
+    letter-spacing: 0.025rem;
 }
 
 @media screen and (max-width: 44.25rem) {
